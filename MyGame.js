@@ -5,7 +5,7 @@ function wildCherrySlotMachine() {
 
     let slots = new Array;
     const items = ['SingleBar', 'DoubleBar', 'TripleBar', 'Zonk', '7', 'WildCherry'];
-    const weights = [3, 4, 4, 5, 3, 2];
+    const weights = [1, 1, 1, 1, 1, 10];
     let wallet = 0;
     let playerBet = 0;
     let playerWallet = 0;
@@ -55,22 +55,19 @@ function wildCherrySlotMachine() {
                     wallet += 150;
                     winningTotal += 150;
                     console.log(`You just won $150 and you now have $${wallet}`);
-                } else if (slots[0] === "WildCherry") {
+                } else if (slots[0] === "WildCherry" && slots[1] === "WildCherry" && slots[2] === "WildCherry") {
                     wallet += 300;
                     winningTotal += 300;
                     console.log(`You won the JACKPOT!! You won $300 and you now have $${wallet}`)
                 }
-                else if (slots[0] === "WildCherry" || slots[1] === "WildCherry" || slots[2] === "WildCherry") {
+                
+            }
+            else if (slots[0] === "WildCherry" || slots[1] === "WildCherry" || slots[2] === "WildCherry") {
                 wallet += 5;
                 winningTotal += 5;
                 console.log(`You won $5, bringing your total to $${wallet}`);
 
-            }
-
-
             }  else {
-
-                // wallet -= playerBet;
                 console.log(`Sorry, not a win. Your total is now $${wallet}`);
             }
 
@@ -81,8 +78,8 @@ function wildCherrySlotMachine() {
     } else {
         console.log("Thank you for playing! Please stop by our amazing gift shop on your way out!!!");
     }
-    //TODO: Add the winning and losing totals with the grand total of the wallet to the console log below
-    //   console.log(``)
+    console.log(`You made a profit of $${winningTotal}\nYou lost $${losingTotal}\nYour wallet total is now $${wallet}`);
+    
 }
 
 wildCherrySlotMachine();
